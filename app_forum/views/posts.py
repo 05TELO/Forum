@@ -25,3 +25,4 @@ class PostCreateView(generic.CreateView):
         form.instance.topic = Topic.objects.get(id=topic)
         rs = super().form_valid(form)
         return rs
+
