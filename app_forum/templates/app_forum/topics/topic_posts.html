@@ -1,0 +1,31 @@
+{% extends 'app_forum/base.html' %}
+
+{% block title %} Homepage {% endblock title %}
+
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+<main role="main" class="container">
+
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+
+        <h6 class="border-bottom border-gray pb-2 mb-0">Topic posts:</h6>
+          {% for post in object_list %}
+
+        <div class="media text-muted pt-3" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">{{ post.text }} </strong>
+              {{ post.date }}
+          </p>
+        </div>
+
+          {% endfor %}
+
+      </div>
+</main>
+
+
+
+
+{% endblock content %}

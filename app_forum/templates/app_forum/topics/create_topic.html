@@ -1,0 +1,16 @@
+{% extends "app_forum/base.html" %}
+
+{% block title %}Контакты{% endblock title %}
+
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+<div class="container" align="center">
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+
+</div>
+{% endblock content %}
+
