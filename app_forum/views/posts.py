@@ -1,18 +1,15 @@
-from typing import Any
-from typing import cast
-
 from django import forms
-from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
 
-from app_forum.models import Topic, Post
+from app_forum.models import Post
+from app_forum.models import Topic
+
 
 class PostForm(forms.Form):
     text = forms.CharField(label="Post :")
+
 
 class PostCreateView(generic.CreateView):
     model = Post
@@ -25,4 +22,3 @@ class PostCreateView(generic.CreateView):
         form.instance.topic = Topic.objects.get(id=topic)
         rs = super().form_valid(form)
         return rs
-
