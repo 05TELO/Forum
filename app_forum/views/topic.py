@@ -36,4 +36,5 @@ class TopicCreateView(generic.CreateView):
 
     def form_valid(self, form: forms.ModelForm) -> HttpResponse:
         rs = super().form_valid(form)
+
         return rs
