@@ -20,7 +20,7 @@ class PostsListView(generic.ListView):
 
     def get_queryset(self) -> Any:
         qs = super().get_queryset()
-        return qs.filter(topic=self.kwargs["pk"])
+        return qs.filter(topic=self.kwargs["topic_id"])
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         ctx = super().get_context_data(**kwargs)

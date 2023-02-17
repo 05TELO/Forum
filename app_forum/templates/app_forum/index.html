@@ -16,6 +16,8 @@
         <div class="media text-muted pt-3" onclick="location.href='{{ topic.id }}/posts/';" style="cursor:pointer;">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">{{ topic.title }}</strong>
+            <a href="{% url 'forum:delete_topic' topic.pk %}">DELETE</a>
+            <a href="{% url 'forum:update_topic' topic.pk %}">UPDATE</a>
               {{ topic.date }}
           </p>
         </div>

@@ -13,9 +13,11 @@
         <h6 class="border-bottom border-gray pb-2 mb-0">Topic posts:</h6>
           {% for post in object_list %}
 
-        <div class="media text-muted pt-3" onclick="location.href='http://www.example.com';" style="cursor:pointer;">
+        <div class="media text-muted pt-3" >
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">{{ post.text }} </strong>
+              <a href="{% url 'forum:delete_post' post.topic.pk post.pk %}">DELETE</a>
+              <a href="{% url 'forum:update_post' post.topic.pk post.pk %}">UPDATE</a>
               {{ post.date }}
           </p>
         </div>
