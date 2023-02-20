@@ -8,9 +8,6 @@ from app_forum.models import Post
 from app_forum.models import Topic
 
 
-class PostForm(forms.Form):
-    text = forms.CharField(label="Post :")
-
 
 class PostCreateView(generic.CreateView):
     model = Post
