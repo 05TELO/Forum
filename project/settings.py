@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "app_forum",
+    "app_authentication",
 ]
 
 MIDDLEWARE = [

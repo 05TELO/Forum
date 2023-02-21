@@ -1,14 +1,16 @@
 from django import forms
-from .models import Post, Topic
+
+from .models import Post
+from .models import Topic
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['text']
+        fields = ["text"]
 
 
 class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
-        fields = ['title']
+        fields = ["title"]

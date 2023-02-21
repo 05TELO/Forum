@@ -1,0 +1,23 @@
+{% extends "app_forum/base.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+    <h1>Log-in</h1>
+    <p>Please, use the following form to log-in:</p>
+<form action="." method="post">
+    {% csrf_token %}
+    {% for field in form %}
+
+  <div class="mb-3">
+            {{ field.label_tag }}
+            {{ field.errors }}
+            {{ field }}
+  </div>
+    {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+

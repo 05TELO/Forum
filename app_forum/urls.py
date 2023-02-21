@@ -34,7 +34,7 @@ urlpatterns = [
         name="update_post",
     ),
     path(
-        "<int:pk>/posts/add/",
+        "<int:topic_id>/posts/add/",
         views.PostCreateView.as_view(),
         name="create_post",
     ),

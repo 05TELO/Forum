@@ -1,0 +1,32 @@
+{% extends "app_forum/base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+    <h1>Create an account</h1>
+    <p>Please, sign up using the following form:</p>
+           {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning" style="float:left; max-width: fit-content; max-height: 40px; margin-bottom: 0; padding: 3px;">{{ message }}</div>
+                {% endfor %}
+
+            {% endif %}
+    <br>
+    <br>
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+
+  <div class="mb-3">
+            {{ field.label_tag }}
+            {{ field.errors }}
+            {{ field }}
+  </div>
+    {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

@@ -4,13 +4,18 @@
 
 {% block content %}
 {% include 'includes/navbar.html' %}
-
+        <form action="{% url 'forum:create_topic' %}" method="get">
+            <p>
+            <button class="btn btn-primary" type="submit" value="Save">  Add topic</button>
+            </p>
+        </form>
 <main role="main" class="container">
 
 
       <div class="my-3 p-3 bg-white rounded box-shadow">
 
         <h6 class="border-bottom border-gray pb-2 mb-0">Topics:</h6>
+        {% if object_list %}
           {% for topic in object_list %}
 
         <div class="media text-muted pt-3" onclick="location.href='{{ topic.id }}/posts/';" style="cursor:pointer;">
@@ -22,6 +27,7 @@
           </p>
         </div>
           {% endfor %}
+        {% endif %}
 
       </div>
 </main>

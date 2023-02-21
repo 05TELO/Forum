@@ -3,12 +3,10 @@ from typing import Any
 from django.contrib.auth import get_user_model
 from django.views import generic
 
-from app_forum.models import Post
 from app_forum.forms import PostForm
+from app_forum.models import Post
 
 User = get_user_model()
-
-
 
 
 class PostsListView(generic.ListView):
@@ -19,4 +17,3 @@ class PostsListView(generic.ListView):
     def get_queryset(self) -> Any:
         qs = super().get_queryset()
         return qs.filter(topic=self.kwargs["topic_id"])
-
