@@ -3,8 +3,10 @@ from .posts import PostDeleteView
 from .posts import PostUpdateView
 from .topic import TopicCreateView
 from .topic import TopicDeleteView
+from .topic import TopicSearchView
 from .topic import TopicsListView
 from .topic import TopicUpdateView
+from .topic_posts import PostSearchView
 from .topic_posts import PostsListView
 
 __all__ = [
@@ -16,4 +18,6 @@ __all__ = [
     "PostUpdateView",
     "TopicDeleteView",
     "TopicUpdateView",
+    "TopicSearchView",
+    "PostSearchView",
 ]

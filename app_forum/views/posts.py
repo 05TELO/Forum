@@ -1,9 +1,9 @@
 from django import forms
 from django.http import HttpResponse
-from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views import generic
 
+from app_forum.logic_forum import get_reverse_url
 from app_forum.models import Post
 from app_forum.models import Topic
 
@@ -16,7 +16,7 @@ class PostCreateView(generic.CreateView):
 
     def form_valid(self, form: forms.ModelForm) -> HttpResponse:
         topic = self.kwargs["topic_id"]
-        self.success_url = reverse("forum:topic_posts", args=[topic])
+        self.success_url = get_reverse_url(topic)
         form.instance.topic = Topic.objects.get(id=topic)
         rs = super().form_valid(form)
         return rs
@@ -30,7 +30,7 @@ class PostDeleteView(generic.DeleteView):
 
     def form_valid(self, form: forms.ModelForm) -> HttpResponse:
         topic = self.kwargs["topic_id"]
-        self.success_url = reverse("forum:topic_posts", args=[topic])
+        self.success_url = get_reverse_url(topic)
         rs = super().form_valid(form)
         return rs
 
@@ -44,6 +44,6 @@ class PostUpdateView(generic.UpdateView):
 
     def form_valid(self, form: forms.ModelForm) -> HttpResponse:
         topic = self.kwargs["topic_id"]
-        self.success_url = reverse("forum:topic_posts", args=[topic])
+        self.success_url = get_reverse_url(topic)
         rs = super().form_valid(form)
         return rs

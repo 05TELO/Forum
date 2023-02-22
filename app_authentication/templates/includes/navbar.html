@@ -14,6 +14,11 @@
         <a class="nav-link" href="{% url 'auth:sing_up' %}">Sing Up</a>
       </div>
     </div>
+        <form class="d-flex" action="search/" method="post">
+          {% csrf_token %}
+          <input class="form-control me-2" type="text" name="search" value="{{search|default:''}}" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
   </div>
 </nav>
 
