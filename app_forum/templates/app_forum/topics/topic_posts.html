@@ -4,6 +4,13 @@
 
 {% block content %}
 {% include 'includes/navbar.html' %}
+    <div>
+        <form action="add/" method="get">
+            <p>
+            <button class="btn btn-outline-primary" type="submit" value="Save">  Add post</button>
+            </p>
+        </form>
+    </div>
 
 <main role="main" class="container">
 
@@ -26,12 +33,6 @@
 
       </div>
 </main>
-
-        <form action="add/" method="get">
-            <p>
-            <button class="btn btn-primary" type="submit" value="Save">  Добавить</button>
-            </p>
-        </form>
 
 
 {% endblock content %}

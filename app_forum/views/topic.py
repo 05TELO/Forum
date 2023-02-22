@@ -1,4 +1,8 @@
+from typing import Any
+
+from django import forms
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -12,6 +16,24 @@ class TopicsListView(generic.ListView):
     model = Topic
     template_name = "app_forum/index.html"
     extra_context = {"form": TopicForm()}
+
+    def get_queryset(self) -> Any:
+        qs = super().get_queryset()
+        search = self.request.session.get("search")
+        if search:
+            return qs.filter(title__icontains=search)
+        return qs
+
+
+class TopicSearchView(generic.FormView):
+    form_class = forms.Form
+    success_url = reverse_lazy("forum:index")
+    http_method_names = ["post"]
+
+    def form_valid(self, form: forms.Form) -> HttpResponse:
+        search = self.request.POST["search"]
+        self.request.session["search"] = search
+        return super().form_valid(form)
 
 
 class TopicCreateView(generic.CreateView):
