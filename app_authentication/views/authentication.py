@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login
 from django.contrib.auth import logout
+from django.contrib.auth.models import Group
 from django.db import IntegrityError
 from django.http import HttpRequest
 from django.http import HttpResponse
@@ -60,6 +61,8 @@ class UserSignUp(generic.FormView):
         except IntegrityError:
             messages.error(self.request, "name is already in use")
             return redirect(reverse_lazy("auth:sing_up"))
+        group = Group.objects.get(name="user")
+        new_user.groups.add(group)
         new_user.save()
         profile_user = Profile(user=new_user)
         profile_user.save()

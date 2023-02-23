@@ -47,6 +47,7 @@ class TopicCreateView(generic.CreateView):
         rs = super().form_valid(form)
         return rs
 
+
 class TopicDeleteView(generic.DeleteView):
     model = Topic
     success_url = reverse_lazy("forum:index")
