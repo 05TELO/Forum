@@ -16,6 +16,7 @@ class PostCreateView(generic.CreateView):
 
     def form_valid(self, form: forms.ModelForm) -> HttpResponse:
         topic = self.kwargs["topic_id"]
+        form.instance.author = self.request.user
         self.success_url = get_reverse_url(topic)
         form.instance.topic = Topic.objects.get(id=topic)
         rs = super().form_valid(form)

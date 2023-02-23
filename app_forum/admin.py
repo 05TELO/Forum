@@ -7,7 +7,7 @@ from app_forum.models import Topic
 # Register your models here.
 @admin.register(Topic)
 class TopicModelAdmin(admin.ModelAdmin):  # noqa: F811
-    list_display = ["title", "date", "posts"]
+    list_display = ["title", "date"]
 
 
 @admin.register(Post)

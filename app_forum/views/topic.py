@@ -42,6 +42,10 @@ class TopicCreateView(generic.CreateView):
     success_url = reverse_lazy("forum:index")
     template_name = "app_forum/topics/create_topic.html"
 
+    def form_valid(self, form: forms.ModelForm) -> HttpResponse:
+        form.instance.author = self.request.user
+        rs = super().form_valid(form)
+        return rs
 
 class TopicDeleteView(generic.DeleteView):
     model = Topic

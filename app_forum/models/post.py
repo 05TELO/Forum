@@ -14,6 +14,6 @@ class Post(models.Model):
     topic: Any = models.ForeignKey(
         Topic, on_delete=models.CASCADE, related_name="posts"
     )
-
+    author: Any = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True, related_name='+')
     def __str__(self):
         return f"{self.pk}"
