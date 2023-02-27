@@ -2,11 +2,10 @@ from typing import Any
 
 from django import forms
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
-
 
 from app_forum.forms import TopicForm
 from app_forum.models import Topic

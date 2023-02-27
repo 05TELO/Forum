@@ -1,16 +1,14 @@
 from django import forms
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
-
 
 from app_forum.logic_forum import get_reverse_url
 from app_forum.models import Post
 from app_forum.models import Topic
 
 url_login = reverse_lazy("auth:login")
-
 
 
 class PostCreateView(LoginRequiredMixin, generic.CreateView):

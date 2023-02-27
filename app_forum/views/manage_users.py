@@ -12,6 +12,7 @@ from app_forum.models import Post
 
 User = get_user_model()
 
+
 class UsersListView(generic.ListView):
     model = User
     template_name = "app_forum/manage_users/manage_users.html"
