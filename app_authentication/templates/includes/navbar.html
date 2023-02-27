@@ -10,8 +10,8 @@
         <a class="nav-link" href="{% url 'auth:user_profile' %}">Hello, {{user}}!</a>
         {% else %}
         <a class="nav-link" href="{% url 'auth:login' %}">Log-in</a>
-        {% endif %}
         <a class="nav-link" href="{% url 'auth:sing_up' %}">Sing Up</a>
+        {% endif %}
       </div>
     </div>
         <form class="d-flex" action="search/" method="post">

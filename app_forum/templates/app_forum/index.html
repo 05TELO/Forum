@@ -5,11 +5,20 @@
 
 {% block content %}
 {% include 'includes/navbar.html' %}
+        {% if user.is_authenticated %}
         <form action="{% url 'forum:create_topic' %}" method="get">
             <p>
             <button class="btn btn-outline-primary" type="submit" value="Save">  Add topic</button>
             </p>
         </form>
+        {% endif %}
+        {% if user|has_group:"moderator" %}
+        <form action="{% url 'forum:manage_users' %}" method="get">
+            <p>
+            <button class="btn btn-outline-primary" type="submit" value="Save">  Manage users</button>
+            </p>
+        </form>
+        {% endif %}
 <main role="main" class="container">
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">Topics:</h6>

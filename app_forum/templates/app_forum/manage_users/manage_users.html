@@ -1,0 +1,35 @@
+{% extends "app_forum/base.html" %}
+{% load filter_group %}
+
+{% block title %}Users{% endblock title %}
+
+{% block content %}
+{% include 'includes/navbar.html' %}
+<p><h1>List of users:</h1></p>
+<table class="table caption-top">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in object_list %}
+    <tr>
+      {% if not user.is_superuser %}
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+          <select onchange="location.href='change-group/{{ user.pk }}/' + this.value ;" >
+            <option value="user" {% if user|has_group:'user' %}selected{% endif %}>User</option>
+            <option value="moderator" {% if user|has_group:'moderator' %}selected{% endif %}>Moderator</option>
+          </select>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
+

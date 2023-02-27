@@ -5,6 +5,7 @@
 
 {% block content %}
 {% include 'includes/navbar.html' %}
+    {% if user.is_authenticated %}
     <div>
         <form action="add/" method="get">
             <p>
@@ -12,6 +13,7 @@
             </p>
         </form>
     </div>
+    {% endif %}
 <main role="main" class="container">
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">Topic posts:</h6>

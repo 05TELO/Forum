@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
@@ -7,8 +8,11 @@ from app_forum.logic_forum import get_reverse_url
 from app_forum.models import Post
 from app_forum.models import Topic
 
+url_login = reverse_lazy("auth:login")
 
-class PostCreateView(generic.CreateView):
+
+class PostCreateView(LoginRequiredMixin, generic.CreateView):
+    login_url = url_login
     model = Post
     fields = ["text"]
     success_url = reverse_lazy("forum:index")
@@ -23,7 +27,8 @@ class PostCreateView(generic.CreateView):
         return rs
 
 
-class PostDeleteView(generic.DeleteView):
+class PostDeleteView(LoginRequiredMixin, generic.DeleteView):
+    login_url = url_login
     model = Post
     success_url = reverse_lazy("forum:index")
     template_name = "app_forum/posts/delete_post.html"
@@ -36,7 +41,8 @@ class PostDeleteView(generic.DeleteView):
         return rs
 
 
-class PostUpdateView(generic.UpdateView):
+class PostUpdateView(LoginRequiredMixin, generic.UpdateView):
+    login_url = url_login
     model = Post
     fields = ["text"]
     success_url = reverse_lazy("forum:index")
