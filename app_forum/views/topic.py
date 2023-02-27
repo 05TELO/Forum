@@ -5,11 +5,14 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from app_forum.forms import TopicForm
 from app_forum.models import Topic
 
 User = get_user_model()
+url_login = reverse_lazy("auth:login")
 
 
 class TopicsListView(generic.ListView):
@@ -36,7 +39,8 @@ class TopicSearchView(generic.FormView):
         return super().form_valid(form)
 
 
-class TopicCreateView(generic.CreateView):
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    login_url = url_login
     model = Topic
     fields = ["title"]
     success_url = reverse_lazy("forum:index")
@@ -48,14 +52,16 @@ class TopicCreateView(generic.CreateView):
         return rs
 
 
-class TopicDeleteView(generic.DeleteView):
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    login_url = url_login
     model = Topic
     success_url = reverse_lazy("forum:index")
     template_name = "app_forum/topics/delete_topic.html"
     pk_url_kwarg = "topic_id"
 
 
-class TopicUpdateView(generic.UpdateView):
+class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
+    login_url = url_login
     model = Topic
     fields = ["title"]
     success_url = reverse_lazy("forum:index")

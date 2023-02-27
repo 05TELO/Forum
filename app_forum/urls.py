@@ -8,6 +8,7 @@ app_name = "forum"
 urlpatterns = [
     path("", views.TopicsListView.as_view(), name="index"),
     path("search/", views.TopicSearchView.as_view(), name="search_topic"),
+    path("manage-users/", views.UsersListView.as_view(), name="manage_users"),
     path(
         "<int:topic_id>/delete/",
         views.TopicDeleteView.as_view(),

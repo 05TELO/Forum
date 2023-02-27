@@ -8,6 +8,7 @@ from .topic import TopicsListView
 from .topic import TopicUpdateView
 from .topic_posts import PostSearchView
 from .topic_posts import PostsListView
+from .manage_users import UsersListView
 
 __all__ = [
     "TopicsListView",
@@ -20,4 +21,5 @@ __all__ = [
     "TopicUpdateView",
     "TopicSearchView",
     "PostSearchView",
+    "UsersListView",
 ]
