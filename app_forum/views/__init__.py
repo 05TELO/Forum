@@ -1,4 +1,6 @@
+from .manage_users import UserSearchView
 from .manage_users import UsersListView
+from .manage_users import handle_change_group
 from .posts import PostCreateView
 from .posts import PostDeleteView
 from .posts import PostUpdateView
@@ -22,4 +24,6 @@ __all__ = [
     "TopicSearchView",
     "PostSearchView",
     "UsersListView",
+    "handle_change_group",
+    "UserSearchView",
 ]

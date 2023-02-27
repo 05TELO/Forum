@@ -10,6 +10,16 @@ urlpatterns = [
     path("search/", views.TopicSearchView.as_view(), name="search_topic"),
     path("manage-users/", views.UsersListView.as_view(), name="manage_users"),
     path(
+        "manage-users/search/",
+        views.UserSearchView.as_view(),
+        name="search_users",
+    ),
+    path(
+        "manage-users/change-group/<int:user_id>/<str:group>/",
+        views.handle_change_group,
+        name="change_group",
+    ),
+    path(
         "<int:topic_id>/delete/",
         views.TopicDeleteView.as_view(),
         name="delete_topic",
