@@ -4,11 +4,17 @@
 ---
 После клонирования репозитория нужно выполнить следующие команды в терминале(находясь в папке проекта):
 
-  >poetry install
+1. Для установки зависимостей:
   
-  >poetry run python manage.py migrate
+    >  poetry install
+    
+2. Для накатывания миграций:  
   
-  >poetry run python manage.py runserver
+    > poetry run python manage.py migrate
+    
+3. Для запуска сервера:  
+  
+    > poetry run python manage.py runserver
   
 ---
 ### Функционал
