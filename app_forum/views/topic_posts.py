@@ -14,6 +14,7 @@ User = get_user_model()
 
 
 class PostsListView(generic.ListView):
+    paginate_by = 6
     model = Post
     template_name = "app_forum/topics/topic_posts.html"
     extra_context = {"form": PostForm()}

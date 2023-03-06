@@ -9,7 +9,6 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-
 User = get_user_model()
 url_login = reverse_lazy("auth:login")
 

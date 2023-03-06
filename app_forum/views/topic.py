@@ -15,6 +15,7 @@ url_login = reverse_lazy("auth:login")
 
 
 class TopicsListView(generic.ListView):
+    paginate_by = 6
     model = Topic
     template_name = "app_forum/index.html"
     extra_context = {"form": TopicForm()}
