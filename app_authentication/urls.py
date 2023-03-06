@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from app_authentication import views
@@ -16,6 +18,11 @@ urlpatterns = [
         name="user_profile_update",
     ),
     path("login/", views.UserAuthentication.as_view(), name="login"),
-    path("logout/", views.handle_user_logout, name="logout"),
+    path(
+        "logout/",
+        LogoutView.as_view(),
+        {"next_page": settings.LOGOUT_REDIRECT_URL},
+        name="logout",
+    ),
     path("sing_up/", views.UserSignUp.as_view(), name="sing_up"),
 ]

@@ -4,10 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login
-from django.contrib.auth import logout
 from django.contrib.auth.models import Group
 from django.db import IntegrityError
-from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -39,11 +37,6 @@ class UserAuthentication(generic.FormView):
             else:
                 return HttpResponse("Disabled account")
         return HttpResponse("Invalid login")
-
-
-def handle_user_logout(request: HttpRequest) -> HttpResponse:
-    logout(request)
-    return redirect(url_redirect)
 
 
 class UserSignUp(generic.FormView):
