@@ -17,7 +17,7 @@ def handle_change_group(
     request: HttpRequest, user_id: int, group: str
 ) -> HttpResponse:
     user = User.objects.get(id=user_id)
-    group = Group.objects.get(name=group)
+    group: Group = Group.objects.get(name=group)
     user.groups.clear()
     user.groups.add(group)
     return redirect("forum:manage_users")

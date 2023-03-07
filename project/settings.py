@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "app_forum",
     "app_authentication",
+    "taggit",
 ]
 
 MIDDLEWARE = [

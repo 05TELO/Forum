@@ -1,7 +1,7 @@
 
 {% extends 'app_forum/base.html' %}
 {% load filter_group %}
-{% block title %} Homepage {% endblock title %}
+{% block title %} {{ title }} {% endblock title %}
 
 {% block content %}
 {% include 'includes/navbar.html' %}
@@ -12,19 +12,18 @@
             </p>
         </form>
         {% endif %}
-        {% if user|has_group:"moderator" %}
-        <form action="{% url 'forum:manage_users' %}" method="get">
-            <p>
-            <button class="btn btn-outline-primary" type="submit" value="Save">  Manage users</button>
-            </p>
-        </form>
-        {% endif %}
+
 <main role="main" class="container">
+          <p class="my-3">Other tags:
+            {% for mt in common_tags %}
+                <a href="{% url 'forum:tag' mt.slug %}" class="badge rounded-pill text-bg-primary">#{{ mt }}</a>
+            {% endfor %}
+          </p>
       <div class="my-3 p-3 bg-white rounded box-shadow">
-        <h1 class="border-bottom border-gray pb-2 mb-0">Topics:</h1>
-        {% if page_obj %}
-          {% for topic in page_obj %}
-        <div class="media text-muted pt-3" onclick="location.href='{{ topic.id }}/posts/';" style="cursor:pointer;">
+        <h1 class="border-bottom border-gray pb-2 mb-0">{{ title }}</h1>
+        {% if topics %}
+          {% for topic in topics %}
+        <div class="media text-muted pt-3" onclick="location.href='/{{ topic.id }}/posts/';" style="cursor:pointer;">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
               author: {{ topic.author.username }}
             <strong class="d-block text-gray-dark">{{ topic.title }}</strong>
@@ -49,6 +48,4 @@
 </main>
 {% endblock content %}
 
-{% block pagination %}
-{% include 'includes/pagination.html' %}
-{% endblock pagination %}
+

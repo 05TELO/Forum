@@ -42,7 +42,7 @@ class TopicSearchView(generic.FormView):
 class TopicCreateView(LoginRequiredMixin, generic.CreateView):
     login_url = url_login
     model = Topic
-    fields = ["title"]
+    fields = ["title", "tag"]
     success_url = reverse_lazy("forum:index")
     template_name = "app_forum/topics/create_topic.html"
 
@@ -63,7 +63,7 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
     login_url = url_login
     model = Topic
-    fields = ["title"]
+    fields = ["title", "tag"]
     success_url = reverse_lazy("forum:index")
     template_name = "app_forum/topics/update_topic.html"
     pk_url_kwarg = "topic_id"

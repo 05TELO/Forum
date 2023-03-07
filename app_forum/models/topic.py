@@ -2,6 +2,7 @@ from typing import Any
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from taggit.managers import TaggableManager
 
 User = get_user_model()
 
@@ -16,6 +17,7 @@ class Topic(models.Model):
         blank=True,
         related_name="+",
     )
+    tag: Any = TaggableManager()
 
     def __str__(self):
         return f"{self.title}"
